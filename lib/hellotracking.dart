@@ -1,28 +1,26 @@
 library hellotracking;
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 /// The tracking implementation.
 class HelloTrackingServiceImp implements HelloTrackingService {
+  final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
+
   @override
-  void init() {
-    // TODO: implement init
+  Future<void> setUserId(String id) async {
+    await _analytics.setUserId(id: id);
   }
 
   @override
-  void setUserId() {
-    // TODO: implement setUserId
+  Future<void> trackEvent(String name, dynamic extras) async {
+    await FirebaseAnalytics.instance.logEvent(
+      name: name, parameters: extras,
+    );
   }
-
-  @override
-  void trackEvent(String name) {
-    // TODO: implement trackEvent
-  }
- 
-  
 }
 
 /// The tracking service.
 abstract class HelloTrackingService {
-  void init();
-  void setUserId();
-  void trackEvent(String name);
+  Future<void> setUserId(String id);
+  Future<void> trackEvent(String name, dynamic extras);
 }
