@@ -12,9 +12,16 @@ class HelloTrackingServiceImp implements HelloTrackingService {
   }
 
   @override
-  Future<void> trackEvent(String name, dynamic extras) async {
+  Future<void> trackEventWith(String name, Map<String, String?> extras) async {
     await FirebaseAnalytics.instance.logEvent(
       name: name, parameters: extras,
+    );
+  }
+
+  @override
+  Future<void> trackEvent(String name) async {
+    await FirebaseAnalytics.instance.logEvent(
+      name: name
     );
   }
 }
@@ -22,5 +29,6 @@ class HelloTrackingServiceImp implements HelloTrackingService {
 /// The tracking service.
 abstract class HelloTrackingService {
   Future<void> setUserId(String id);
-  Future<void> trackEvent(String name, dynamic extras);
+  Future<void> trackEventWith(String name, Map<String, String?> extras);
+  Future<void> trackEvent(String name);
 }
