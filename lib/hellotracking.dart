@@ -1,7 +1,6 @@
 library hellotracking;
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'dart:io' show Platform;
 
 /// The tracking implementation.
 class HelloTrackingServiceImp implements HelloTrackingService {
