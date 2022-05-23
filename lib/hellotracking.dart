@@ -1,6 +1,7 @@
 library hellotracking;
 
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
 
 /// The tracking implementation.
 class HelloTrackingServiceImp implements HelloTrackingService {
@@ -13,16 +14,21 @@ class HelloTrackingServiceImp implements HelloTrackingService {
 
   @override
   Future<void> trackEventWith(String name, Map<String, String?> extras) async {
-    await FirebaseAnalytics.instance.logEvent(
+    await _analytics.logEvent(
       name: name, parameters: extras,
     );
   }
 
   @override
   Future<void> trackEvent(String name) async {
-    await FirebaseAnalytics.instance.logEvent(
+    await _analytics.logEvent(
       name: name
     );
+  }
+
+  @override
+  RouteObserver<Route> getNavigationRouteObserver() {
+    return FirebaseAnalyticsObserver(analytics: _analytics);
   }
 }
 
@@ -31,4 +37,5 @@ abstract class HelloTrackingService {
   Future<void> setUserId(String id);
   Future<void> trackEventWith(String name, Map<String, String?> extras);
   Future<void> trackEvent(String name);
+  RouteObserver getNavigationRouteObserver();
 }
