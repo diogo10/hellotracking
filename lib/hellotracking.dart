@@ -31,27 +31,16 @@ class HelloTrackingServiceImp implements HelloTrackingService {
       name: 'screen_view',
       parameters: {
         'firebase_screen': name,
-        'firebase_screen_class': _platformName,
+        'firebase_screen_class': "Flutter",
       },
     );
-  }
-
-  String _platformName() {
-    if (Platform.isAndroid) {
-      return "MainActivity";
-    } else {
-      return "MainViewController";
-    }
   }
 }
 
 /// The tracking service.
 abstract class HelloTrackingService {
   Future<void> setUserId(String id);
-
   Future<void> trackEventWith(String name, Map<String, String?> extras);
-
   Future<void> trackEvent(String name);
-
   Future<void> trackScreen(String name);
 }
