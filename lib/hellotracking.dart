@@ -26,13 +26,7 @@ class HelloTrackingServiceImp implements HelloTrackingService {
 
   @override
   Future<void> trackScreen(String name) async {
-    await _analytics.logEvent(
-      name: 'screen_view',
-      parameters: {
-        'firebase_screen': name,
-        'firebase_screen_class': "Flutter",
-      },
-    );
+    await _analytics.setCurrentScreen(screenName: name);
   }
 }
 
