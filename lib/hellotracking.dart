@@ -28,11 +28,23 @@ class HelloTrackingServiceImp implements HelloTrackingService {
   Future<void> trackScreen(String name) async {
     await _analytics.setCurrentScreen(screenName: name);
   }
+
+  @override
+  Future<void> disableTracking() async {
+     _analytics.setAnalyticsCollectionEnabled(false);
+  }
+
+  @override
+  Future<void> enableTracking() async {
+    _analytics.setAnalyticsCollectionEnabled(true);
+  }
 }
 
 /// The tracking service.
 abstract class HelloTrackingService {
   Future<void> setUserId(String id);
+  Future<void> disableTracking();
+  Future<void> enableTracking();
   Future<void> trackEventWith(String name, Map<String, String?> extras);
   Future<void> trackEvent(String name);
   Future<void> trackScreen(String name);
