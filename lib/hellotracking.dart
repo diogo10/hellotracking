@@ -31,12 +31,12 @@ class HelloTrackingServiceImp implements HelloTrackingService {
 
   @override
   Future<void> disableTracking() async {
-     _analytics.setAnalyticsCollectionEnabled(false);
+     await _analytics.setAnalyticsCollectionEnabled(false);
   }
 
   @override
   Future<void> enableTracking() async {
-    _analytics.setAnalyticsCollectionEnabled(true);
+    await _analytics.setAnalyticsCollectionEnabled(true);
   }
 }
 
