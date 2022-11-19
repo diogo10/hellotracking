@@ -1,14 +1,14 @@
 name: hellotracking
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: hellojussy.pt/tech
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
-  firebase_analytics: ^9.1.8
+  firebase_analytics: ^10.0.6
   flutter:
     sdk: flutter
 
