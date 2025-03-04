@@ -12,7 +12,7 @@ class HelloTrackingServiceImp implements HelloTrackingService {
   }
 
   @override
-  Future<void> trackEventWith(String name, Map<String, String?> extras) async {
+  Future<void> trackEventWith(String name, Map<String, String> extras) async {
     await _analytics.logEvent(
       name: name,
       parameters: extras,
@@ -45,7 +45,7 @@ abstract class HelloTrackingService {
   Future<void> setUserId(String id);
   Future<void> disableTracking();
   Future<void> enableTracking();
-  Future<void> trackEventWith(String name, Map<String, String?> extras);
+  Future<void> trackEventWith(String name, Map<String, String> extras);
   Future<void> trackEvent(String name);
   Future<void> trackScreen(String name);
 }
